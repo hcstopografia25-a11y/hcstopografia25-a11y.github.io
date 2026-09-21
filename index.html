@@ -492,6 +492,52 @@
         right: 10px;
     }
 }
+    /* MENU MOBILE */
+.menu-mobile {
+    display: none;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        position: relative;
+    }
+
+    .menu-mobile {
+        display: block;
+        margin-left: auto;
+    }
+
+    header nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #0b3047;
+        flex-direction: column;
+        padding: 15px 0;
+        z-index: 9998;
+        box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    }
+
+    header nav.menu-aberto {
+        display: flex;
+    }
+
+    header nav a {
+        display: block;
+        width: 100%;
+        padding: 14px 25px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+}
   </style>
 </head>
 
@@ -502,6 +548,8 @@
   <div class="marca">
     HCS TOPOGRAFIA
   </div>
+
+  <button class="menu-mobile" onclick="abrirMenu()">☰</button>
 
   <nav>
     <a href="#inicio">Início</a>
@@ -905,6 +953,10 @@
 
         imagemAmpliada.src = fotosAtuais[fotoAtual];
     }
+  function abrirMenu() {
+    const menu = document.querySelector('header nav');
+    menu.classList.toggle('menu-aberto');
+}
 </script>
 
 </body>
