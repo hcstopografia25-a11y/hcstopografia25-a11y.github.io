@@ -603,12 +603,20 @@
     </div>
 
     <!-- GNSS -->
-    <div class="trabalho">
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(1).jpeg"
-             alt="Levantamento com GNSS">
-        <h3>Levantamento com GNSS</h3>
-        <p>Posicionamento e levantamentos georreferenciados com tecnologia GNSS.</p>
+<div class="trabalho" data-galeria="gnss">
+    <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(1).jpeg"
+         alt="Levantamento com GNSS">
+
+    <div class="fotos-extras" style="display:none;">
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(2).jpeg">
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(3).jpeg">
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06.jpeg">
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.07.jpeg">
     </div>
+
+    <h3>Levantamento com GNSS</h3>
+    <p>Posicionamento e levantamentos georreferenciados com tecnologia GNSS.</p>
+</div>
 
     <!-- SUBESTAÇÃO -->
     <div class="trabalho">
@@ -767,26 +775,88 @@
 
   <!-- VISUALIZAÇÃO AMPLIADA DAS FOTOS -->
 <div id="foto-ampliada" onclick="fecharFoto()">
-    <span>&times;</span>
-    <img id="imagem-ampliada" src="" alt="Trabalho HCS Topografia">
+
+    <span class="fechar-foto">&times;</span>
+
+    <button class="seta-foto seta-esquerda"
+            onclick="fotoAnterior(event)">&#10094;</button>
+
+    <img id="imagem-ampliada"
+         src=""
+         alt="Trabalho HCS Topografia"
+         onclick="event.stopPropagation()">
+
+    <button class="seta-foto seta-direita"
+            onclick="proximaFoto(event)">&#10095;</button>
+
 </div>
 
 <script>
-    const fotosGaleria = document.querySelectorAll('.galeria-grid img');
     const visualizador = document.getElementById('foto-ampliada');
     const imagemAmpliada = document.getElementById('imagem-ampliada');
 
-    fotosGaleria.forEach(function(foto) {
-        foto.style.cursor = 'pointer';
+    let fotosAtuais = [];
+    let fotoAtual = 0;
 
-        foto.addEventListener('click', function() {
-            imagemAmpliada.src = this.src;
+    // Fotos principais dos cartões
+    const trabalhos = document.querySelectorAll('.trabalho');
+
+    trabalhos.forEach(function(trabalho) {
+
+        const fotoPrincipal = trabalho.querySelector(':scope > img');
+
+        if (!fotoPrincipal) return;
+
+        fotoPrincipal.style.cursor = 'pointer';
+
+        fotoPrincipal.addEventListener('click', function() {
+
+            fotosAtuais = [fotoPrincipal.src];
+
+            // Procura fotos extras dentro deste trabalho
+            const fotosExtras = trabalho.querySelectorAll('.fotos-extras img');
+
+            fotosExtras.forEach(function(foto) {
+                fotosAtuais.push(foto.src);
+            });
+
+            fotoAtual = 0;
+
+            imagemAmpliada.src = fotosAtuais[fotoAtual];
             visualizador.style.display = 'flex';
         });
     });
 
     function fecharFoto() {
         visualizador.style.display = 'none';
+    }
+
+    function proximaFoto(event) {
+        event.stopPropagation();
+
+        if (fotosAtuais.length <= 1) return;
+
+        fotoAtual++;
+
+        if (fotoAtual >= fotosAtuais.length) {
+            fotoAtual = 0;
+        }
+
+        imagemAmpliada.src = fotosAtuais[fotoAtual];
+    }
+
+    function fotoAnterior(event) {
+        event.stopPropagation();
+
+        if (fotosAtuais.length <= 1) return;
+
+        fotoAtual--;
+
+        if (fotoAtual < 0) {
+            fotoAtual = fotosAtuais.length - 1;
+        }
+
+        imagemAmpliada.src = fotosAtuais[fotoAtual];
     }
 </script>
 
