@@ -400,6 +400,51 @@
 .galeria-grid img:hover {
     transform: scale(1.03);
 }
+
+    /* CARTÕES DOS TRABALHOS */
+
+.trabalho {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.trabalho:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+
+.trabalho img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    display: block;
+}
+
+.trabalho h3 {
+    color: #0b3048;
+    font-size: 22px;
+    margin: 20px 20px 10px;
+}
+
+.trabalho p {
+    color: #555;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0 20px 22px;
+}
+
+@media (max-width: 768px) {
+    .galeria-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trabalho img {
+        height: 300px;
+    }
+}
   </style>
 </head>
 
@@ -549,28 +594,31 @@
 
     <div class="galeria-grid">
 
+    <!-- ESTAÇÃO TOTAL -->
+    <div class="trabalho">
         <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.05.jpeg"
-             alt="Serviço de topografia com estação total">
-
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(1).jpeg"
-             alt="Levantamento topográfico com GNSS">
-
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(2).jpeg"
-             alt="Levantamento com receptores GNSS">
-
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(3).jpeg"
-             alt="Operação de equipamento GNSS em campo">
-
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06.jpeg"
-             alt="Serviço de agrimensura com GNSS">
-
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.07%20(1).jpeg"
-             alt="Levantamento topográfico com estação total">
-
-        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.07.jpeg"
-             alt="Trabalho de campo com equipamento GNSS">
-
+             alt="Levantamento com estação total">
+        <h3>Estação Total</h3>
+        <p>Levantamentos topográficos com precisão para obras, projetos e conferências.</p>
     </div>
+
+    <!-- GNSS -->
+    <div class="trabalho">
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(1).jpeg"
+             alt="Levantamento com GNSS">
+        <h3>Levantamento com GNSS</h3>
+        <p>Posicionamento e levantamentos georreferenciados com tecnologia GNSS.</p>
+    </div>
+
+    <!-- SUBESTAÇÃO -->
+    <div class="trabalho">
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.07%20(1).jpeg"
+             alt="Levantamento topográfico em subestação de energia">
+        <h3>Subestação de Energia</h3>
+        <p>Levantamento e conferência topográfica aplicados a instalações de infraestrutura elétrica.</p>
+    </div>
+
+</div>
 
 </section>
 
@@ -682,13 +730,29 @@
 
 <footer>
 
-  <p>
-    © 2026 HCS Topografia — Soluções em Agrimensura
-  </p>
+    <p>
+        © 2026 HCS Topografia – Soluções em Agrimensura
+    </p>
 
-  <p>
-    Precisão que gera resultado.
-  </p>
+    <p>
+        Precisão que gera resultado.
+    </p>
+
+    <p>
+        📞 WhatsApp: (31) 99147-1756 &nbsp; | &nbsp;
+        ✉️ hcstopografia25@gmail.com
+    </p>
+
+    <p>
+        📷 Instagram:
+        <a href="https://www.instagram.com/hcstopografia/" target="_blank">
+            @hcstopografia
+        </a>
+    </p>
+
+    <p>
+        Técnico em Agrimensura • CFT • Credenciado SIGEF/INCRA – WAUD
+    </p>
 
 </footer>
 
