@@ -359,6 +359,47 @@
         height: 300px;
     }
 }
+
+    /* FOTO AMPLIADA DA GALERIA */
+#foto-ampliada {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+#foto-ampliada img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+#foto-ampliada span {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: white;
+    font-size: 45px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.galeria-grid img {
+    cursor: pointer;
+    transition: transform 0.25s ease;
+}
+
+.galeria-grid img:hover {
+    transform: scale(1.03);
+}
   </style>
 </head>
 
@@ -500,11 +541,11 @@
 <!-- GALERIA DE SERVIÇOS EM CAMPO -->
 <section id="galeria">
 
-    <h2 class="titulo">Serviços em Campo</h2>
+<h2 class="titulo">Trabalhos em Campo</h2>
 
-    <p class="subtitulo">
-        Tecnologia, precisão e experiência aplicadas em campo.
-    </p>
+<p class="subtitulo">
+    Registros de atividades e serviços de topografia e agrimensura.
+</p>
 
     <div class="galeria-grid">
 
@@ -659,6 +700,31 @@
    WhatsApp
 
 </a>
+
+  <!-- VISUALIZAÇÃO AMPLIADA DAS FOTOS -->
+<div id="foto-ampliada" onclick="fecharFoto()">
+    <span>&times;</span>
+    <img id="imagem-ampliada" src="" alt="Trabalho HCS Topografia">
+</div>
+
+<script>
+    const fotosGaleria = document.querySelectorAll('.galeria-grid img');
+    const visualizador = document.getElementById('foto-ampliada');
+    const imagemAmpliada = document.getElementById('imagem-ampliada');
+
+    fotosGaleria.forEach(function(foto) {
+        foto.style.cursor = 'pointer';
+
+        foto.addEventListener('click', function() {
+            imagemAmpliada.src = this.src;
+            visualizador.style.display = 'flex';
+        });
+    });
+
+    function fecharFoto() {
+        visualizador.style.display = 'none';
+    }
+</script>
 
 </body>
 </html>
