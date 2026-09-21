@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>HCS Topografia | Soluções em Agrimensura</title>
+
+  <meta name="description" content="HCS Topografia - Serviços de topografia, agrimensura, georreferenciamento, levantamentos, locações, GNSS, estação total e drone.">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f5f7f9;
+      color: #1d2935;
+      line-height: 1.6;
+    }
+
+    /* TOPO */
+
+    header {
+      background: #0b2c45;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,.15);
+    }
+
+    .marca {
+      font-size: 22px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 22px;
+      font-size: 15px;
+    }
+
+    nav a:hover {
+      color: #55c6e8;
+    }
+
+    /* CAPA */
+
+    .hero {
+      min-height: 620px;
+      background:
+        linear-gradient(rgba(5,31,51,.90), rgba(8,54,80,.86)),
+        linear-gradient(135deg, #0b2c45, #14799a);
+
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 70px 20px;
+    }
+
+    .hero-content {
+      max-width: 850px;
+    }
+
+    .logo-placeholder {
+      width: 170px;
+      height: 170px;
+      margin: 0 auto 25px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.08);
+      font-size: 35px;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      letter-spacing: 2px;
+      margin-bottom: 5px;
+    }
+
+    .hero h2 {
+      font-size: 24px;
+      font-weight: normal;
+      color: #8bdcf2;
+      margin-bottom: 15px;
+    }
+
+    .slogan {
+      font-size: 20px;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 28px;
+      border-radius: 7px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: .2s;
+    }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: white;
+    }
+
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      background: #20b958;
+    }
+
+    /* SEÇÕES */
+
+    section {
+      padding: 75px 8%;
+    }
+
+    .titulo {
+      text-align: center;
+      color: #0b2c45;
+      font-size: 32px;
+      margin-bottom: 12px;
+    }
+
+    .subtitulo {
+      max-width: 760px;
+      margin: 0 auto 45px;
+      text-align: center;
+      color: #64717c;
+    }
+
+    /* SERVIÇOS */
+
+    #servicos {
+      background: white;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      max-width: 1150px;
+      margin: auto;
+    }
+
+    .card {
+      background: #f7fafc;
+      padding: 30px 25px;
+      border-radius: 10px;
+      border-top: 4px solid #1589ad;
+      box-shadow: 0 4px 15px rgba(0,0,0,.06);
+      transition: .2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h3 {
+      color: #0b2c45;
+      margin-bottom: 10px;
+    }
+
+    /* SOBRE */
+
+    #sobre {
+      background: #eef3f6;
+    }
+
+    .sobre-box {
+      max-width: 950px;
+      margin: auto;
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.06);
+    }
+
+    .sobre-box p {
+      margin-bottom: 15px;
+    }
+
+    .credenciais {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 25px;
+    }
+
+    .credencial {
+      background: #0b2c45;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    .credencial strong {
+      color: #72d6ee;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* ATENDIMENTO */
+
+    #atendimento {
+      background: white;
+      text-align: center;
+    }
+
+    /* CONTATO */
+
+    #contato {
+      background: #0b2c45;
+      color: white;
+      text-align: center;
+    }
+
+    #contato .titulo {
+      color: white;
+    }
+
+    #contato .subtitulo {
+      color: #cbd8e1;
+    }
+
+    .contato-info {
+      margin: 25px 0;
+      font-size: 18px;
+    }
+
+    .contato-info a {
+      color: #72d6ee;
+      text-decoration: none;
+    }
+
+    footer {
+      background: #071f31;
+      color: #c5d0d8;
+      text-align: center;
+      padding: 25px 15px;
+      font-size: 14px;
+    }
+
+    /* BOTÃO FLUTUANTE */
+
+    .whatsapp-fixo {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 14px 18px;
+      border-radius: 50px;
+      font-weight: bold;
+      box-shadow: 0 4px 15px rgba(0,0,0,.25);
+      z-index: 999;
+    }
+
+    /* CELULAR */
+
+    @media (max-width: 700px) {
+
+      header {
+        padding: 15px 20px;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        min-height: 580px;
+      }
+
+      .hero h1 {
+        font-size: 35px;
+      }
+
+      .hero h2 {
+        font-size: 20px;
+      }
+
+      section {
+        padding: 55px 20px;
+      }
+
+      .sobre-box {
+        padding: 25px;
+      }
+
+      .whatsapp-fixo {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="marca">
+    HCS TOPOGRAFIA
+  </div>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#atendimento">Atendimento</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+</header>
+
+
+<section class="hero" id="inicio">
+
+  <div class="hero-content">
+
+    <div class="logo-placeholder">
+      HCS
+    </div>
+
+    <h1>HCS TOPOGRAFIA</h1>
+
+    <h2>Soluções em Agrimensura</h2>
+
+    <p class="slogan">
+      Precisão que gera resultado.
+    </p>
+
+    <a class="btn btn-whatsapp"
+       href="https://wa.me/5531991471756?text=Olá%20HCS%20Topografia!%20Gostaria%20de%20solicitar%20um%20orçamento."
+       target="_blank">
+
+       Solicitar orçamento pelo WhatsApp
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<section id="servicos">
+
+  <h2 class="titulo">Nossos Serviços</h2>
+
+  <p class="subtitulo">
+    Soluções técnicas em topografia e agrimensura para imóveis,
+    obras e propriedades rurais.
+  </p>
+
+
+  <div class="cards">
+
+    <div class="card">
+      <h3>Levantamento Topográfico</h3>
+      <p>
+        Levantamentos planimétricos e planialtimétricos para
+        projetos, obras, regularização e documentação.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Georreferenciamento Rural</h3>
+      <p>
+        Levantamentos georreferenciados de imóveis rurais,
+        conforme as normas e procedimentos aplicáveis.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Demarcação de Lotes</h3>
+      <p>
+        Identificação e materialização dos limites do imóvel
+        com precisão e segurança técnica.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Locação de Obras</h3>
+      <p>
+        Locação de pontos, eixos, pilares e elementos necessários
+        à implantação e execução de obras.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Levantamento com GNSS</h3>
+      <p>
+        Coleta de dados utilizando receptores GNSS de precisão
+        para diferentes aplicações de engenharia e agrimensura.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Estação Total</h3>
+      <p>
+        Levantamentos, conferências, locações e medições
+        utilizando estação total.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Levantamento com Drone</h3>
+      <p>
+        Aerolevantamentos para obtenção de informações,
+        imagens e produtos cartográficos.
+      </p>
+    </div>
+
+
+    <div class="card">
+      <h3>Regularização de Imóveis</h3>
+      <p>
+        Serviços topográficos destinados a processos de
+        regularização, unificação, desmembramento e usucapião.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="sobre">
+
+  <h2 class="titulo">Sobre a HCS</h2>
+
+  <p class="subtitulo">
+    Técnica, precisão e responsabilidade em cada levantamento.
+  </p>
+
+
+  <div class="sobre-box">
+
+    <p>
+      A <strong>HCS Topografia</strong> atua com soluções em
+      topografia e agrimensura, oferecendo serviços voltados
+      a propriedades urbanas e rurais, obras e projetos.
+    </p>
+
+    <p>
+      Os trabalhos são realizados utilizando metodologias
+      e equipamentos adequados às necessidades de cada serviço,
+      buscando precisão, confiabilidade e qualidade nos resultados.
+    </p>
+
+
+    <div class="credenciais">
+
+      <div class="credencial">
+        <strong>Profissional habilitado</strong>
+        Sistema CFT/CRT
+      </div>
+
+      <div class="credencial">
+        <strong>SIGEF / INCRA</strong>
+        Credenciamento WAUD
+      </div>
+
+      <div class="credencial">
+        <strong>Responsabilidade Técnica</strong>
+        TRT quando aplicável
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section id="atendimento">
+
+  <h2 class="titulo">Área de Atendimento</h2>
+
+  <p class="subtitulo">
+    Atendimento em Santa Luzia, Belo Horizonte, Região Metropolitana
+    e outras localidades de Minas Gerais, conforme a necessidade do projeto.
+  </p>
+
+  <a class="btn btn-whatsapp"
+     href="https://wa.me/5531991471756?text=Olá%20HCS%20Topografia!%20Gostaria%20de%20consultar%20a%20disponibilidade%20para%20um%20serviço."
+     target="_blank">
+
+     Consultar atendimento
+
+  </a>
+
+</section>
+
+
+<section id="contato">
+
+  <h2 class="titulo">Entre em Contato</h2>
+
+  <p class="subtitulo">
+    Precisa de um levantamento ou deseja solicitar um orçamento?
+    Fale com a HCS Topografia.
+  </p>
+
+
+  <div class="contato-info">
+
+    <p>
+      <strong>WhatsApp:</strong>
+      (31) 99147-1756
+    </p>
+
+    <p>
+      <strong>E-mail:</strong>
+      <a href="mailto:hcstopografia25@gmail.com">
+        hcstopografia25@gmail.com
+      </a>
+    </p>
+
+  </div>
+
+
+  <a class="btn btn-whatsapp"
+     href="https://wa.me/5531991471756?text=Olá%20HCS%20Topografia!%20Gostaria%20de%20mais%20informações."
+     target="_blank">
+
+     Falar pelo WhatsApp
+
+  </a>
+
+</section>
+
+
+<footer>
+
+  <p>
+    © 2026 HCS Topografia — Soluções em Agrimensura
+  </p>
+
+  <p>
+    Precisão que gera resultado.
+  </p>
+
+</footer>
+
+
+<a class="whatsapp-fixo"
+   href="https://wa.me/5531991471756?text=Olá%20HCS%20Topografia!%20Gostaria%20de%20solicitar%20um%20orçamento."
+   target="_blank">
+
+   WhatsApp
+
+</a>
+
+</body>
+</html>
