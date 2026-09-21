@@ -445,6 +445,53 @@
         height: 300px;
     }
 }
+    /* SETAS DA GALERIA */
+.seta-foto {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10001;
+    background: rgba(0, 0, 0, 0.65);
+    color: white;
+    border: none;
+    width: 55px;
+    height: 70px;
+    border-radius: 10px;
+    font-size: 42px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.seta-esquerda {
+    left: 30px;
+}
+
+.seta-direita {
+    right: 30px;
+}
+
+.seta-foto:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+
+@media (max-width: 768px) {
+    .seta-foto {
+        width: 45px;
+        height: 60px;
+        font-size: 34px;
+    }
+
+    .seta-esquerda {
+        left: 10px;
+    }
+
+    .seta-direita {
+        right: 10px;
+    }
+}
   </style>
 </head>
 
