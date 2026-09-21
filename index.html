@@ -320,6 +320,45 @@
         font-size: 14px;
       }
     }
+    /* GALERIA - SERVIÇOS EM CAMPO */
+
+#galeria {
+    background: #f5f7f9;
+}
+
+.galeria-grid {
+    max-width: 1100px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+}
+
+.galeria-grid img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.galeria-grid img:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.18);
+}
+
+/* GALERIA NO CELULAR */
+@media (max-width: 768px) {
+    .galeria-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .galeria-grid img {
+        height: 300px;
+    }
+}
   </style>
 </head>
 
@@ -457,7 +496,41 @@
   </div>
 
 </section>
+<!-- GALERIA DE SERVIÇOS EM CAMPO -->
+<section id="galeria">
 
+    <h2 class="titulo">Serviços em Campo</h2>
+
+    <p class="subtitulo">
+        Tecnologia, precisão e experiência aplicadas em campo.
+    </p>
+
+    <div class="galeria-grid">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.05.jpeg"
+             alt="Serviço de topografia com estação total">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(1).jpeg"
+             alt="Levantamento topográfico com GNSS">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(2).jpeg"
+             alt="Levantamento com receptores GNSS">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06%20(3).jpeg"
+             alt="Operação de equipamento GNSS em campo">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.06.jpeg"
+             alt="Serviço de agrimensura com GNSS">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.07%20(1).jpeg"
+             alt="Levantamento topográfico com estação total">
+
+        <img src="WhatsApp%20Image%202026-09-21%20at%2011.23.07.jpeg"
+             alt="Trabalho de campo com equipamento GNSS">
+
+    </div>
+
+</section>
 
 <section id="sobre">
 
