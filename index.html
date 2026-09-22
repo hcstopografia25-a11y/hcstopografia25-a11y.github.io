@@ -716,6 +716,33 @@
         <p>Levantamento e conferência topográfica aplicados a instalações de infraestrutura elétrica.</p>
     </div>
 
+      <!-- BATIMETRIA -->
+<div class="trabalho" data-galeria="batimetria">
+    <img src="apache.jpeg"
+         alt="Levantamento batimétrico">
+
+    <div class="fotos-extras" style="display:none;">
+        <img src="apache+hudson.jpeg">
+        <video src="apache.mp4" controls></video>
+    </div>
+
+    <h3>Batimetria</h3>
+    <p>Levantamentos batimétricos para determinação de profundidades e representação do relevo submerso.</p>
+</div>
+
+<!-- DRONE -->
+<div class="trabalho" data-galeria="drone">
+    <img src="drone.jpeg"
+         alt="Levantamento com drone">
+
+    <div class="fotos-extras" style="display:none;">
+        <video src="drone.mp4" controls></video>
+    </div>
+
+    <h3>Levantamento com Drone</h3>
+    <p>Levantamentos aéreos para mapeamento, ortofotos, modelos de terreno e apoio a projetos.</p>
+</div>
+
 </div>
 
 </section>
@@ -885,10 +912,11 @@
     const visualizador = document.getElementById('foto-ampliada');
     const imagemAmpliada = document.getElementById('imagem-ampliada');
 
-    let fotosAtuais = [];
-    let fotoAtual = 0;
+    let midiasAtuais = [];
+    let midiaAtual = 0;
+    let videoAmpliado = null;
 
-    // Fotos principais dos cartões
+    // Configura os cards de Trabalhos em Campo
     const trabalhos = document.querySelectorAll('.trabalho');
 
     trabalhos.forEach(function(trabalho) {
@@ -901,57 +929,127 @@
 
         fotoPrincipal.addEventListener('click', function() {
 
-            fotosAtuais = [fotoPrincipal.src];
+            midiasAtuais = [];
 
-            // Procura fotos extras dentro deste trabalho
-            const fotosExtras = trabalho.querySelectorAll('.fotos-extras img');
-
-            fotosExtras.forEach(function(foto) {
-                fotosAtuais.push(foto.src);
+            // Foto principal
+            midiasAtuais.push({
+                tipo: 'imagem',
+                src: fotoPrincipal.src
             });
 
-            fotoAtual = 0;
+            // Fotos e vídeos extras do mesmo card
+            const extras = trabalho.querySelectorAll(
+                '.fotos-extras img, .fotos-extras video'
+            );
 
-            imagemAmpliada.src = fotosAtuais[fotoAtual];
+            extras.forEach(function(item) {
+
+                if (item.tagName.toLowerCase() === 'video') {
+                    midiasAtuais.push({
+                        tipo: 'video',
+                        src: item.src
+                    });
+                } else {
+                    midiasAtuais.push({
+                        tipo: 'imagem',
+                        src: item.src
+                    });
+                }
+
+            });
+
+            midiaAtual = 0;
+            mostrarMidia();
             visualizador.style.display = 'flex';
         });
+
     });
 
+    function mostrarMidia() {
+
+        const midia = midiasAtuais[midiaAtual];
+
+        // Remove vídeo anterior, caso exista
+        if (videoAmpliado) {
+            videoAmpliado.pause();
+            videoAmpliado.remove();
+            videoAmpliado = null;
+        }
+
+        if (midia.tipo === 'video') {
+
+            imagemAmpliada.style.display = 'none';
+
+            videoAmpliado = document.createElement('video');
+            videoAmpliado.src = midia.src;
+            videoAmpliado.controls = true;
+            videoAmpliado.autoplay = false;
+
+            videoAmpliado.style.maxWidth = '90%';
+            videoAmpliado.style.maxHeight = '90vh';
+
+            videoAmpliado.onclick = function(event) {
+                event.stopPropagation();
+            };
+
+            imagemAmpliada.parentNode.insertBefore(
+                videoAmpliado,
+                imagemAmpliada.nextSibling
+            );
+
+        } else {
+
+            imagemAmpliada.style.display = 'block';
+            imagemAmpliada.src = midia.src;
+        }
+    }
+
     function fecharFoto() {
+
+        if (videoAmpliado) {
+            videoAmpliado.pause();
+            videoAmpliado.remove();
+            videoAmpliado = null;
+        }
+
+        imagemAmpliada.style.display = 'block';
         visualizador.style.display = 'none';
     }
 
     function proximaFoto(event) {
+
         event.stopPropagation();
 
-        if (fotosAtuais.length <= 1) return;
+        if (midiasAtuais.length <= 1) return;
 
-        fotoAtual++;
+        midiaAtual++;
 
-        if (fotoAtual >= fotosAtuais.length) {
-            fotoAtual = 0;
+        if (midiaAtual >= midiasAtuais.length) {
+            midiaAtual = 0;
         }
 
-        imagemAmpliada.src = fotosAtuais[fotoAtual];
+        mostrarMidia();
     }
 
     function fotoAnterior(event) {
+
         event.stopPropagation();
 
-        if (fotosAtuais.length <= 1) return;
+        if (midiasAtuais.length <= 1) return;
 
-        fotoAtual--;
+        midiaAtual--;
 
-        if (fotoAtual < 0) {
-            fotoAtual = fotosAtuais.length - 1;
+        if (midiaAtual < 0) {
+            midiaAtual = midiasAtuais.length - 1;
         }
 
-        imagemAmpliada.src = fotosAtuais[fotoAtual];
+        mostrarMidia();
     }
-  function abrirMenu() {
-    const menu = document.querySelector('header nav');
-    menu.classList.toggle('menu-aberto');
-}
+
+    function abrirMenu() {
+        const menu = document.querySelector('header nav');
+        menu.classList.toggle('menu-aberto');
+    }
 </script>
 
 </body>
